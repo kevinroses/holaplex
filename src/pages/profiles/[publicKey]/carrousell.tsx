@@ -624,7 +624,7 @@ function ProfileNFTs(props: WalletDependantPageProps) {
 }
 
 const nftheadercarrousell = {
-  display: none
+  display: 'none'
 };
 
 
