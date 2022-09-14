@@ -87,59 +87,7 @@ const ProfileLayout = ({ children, profileData }: ProfileLayoutProps) => {
         <div>
         
           <div className="container  mx-auto px-6 pb-20 lg:flex">
-            <div className="mlg:mx-0 relative mx-auto w-full max-w-xs lg:sticky lg:top-24 lg:h-96 nftheadercarrousell">
-              <div className="-mt-12 flex  justify-center text-center lg:justify-start lg:gap-12">
-                <div className=" flex flex-shrink-0 rounded-full border-4 border-gray-900 ">
-                  <img
-                    src={profilePicture}
-                    // imgOpt(, 400)
-                    className="h-24 w-24 rounded-full  bg-gray-900 "
-                    alt="profile picture"
-                  />
-                </div>
-                <div className="mt-16 flex justify-center lg:justify-start">
-                  {anchorWallet?.publicKey.toString() == publicKey && !twitterHandle && (
-                    <ConnectTwitterButton
-                      address={new PublicKey(publicKey)}
-                      connection={connection}
-                      wallet={anchorWallet}
-                      cluster={'mainnet-beta'}
-                      variant={'secondary'}
-                      style={{
-                        background: 'rgb(33,33,33)',
-                        height: '37px',
-                        width: '130px',
-                        borderRadius: '18px',
-                        padding: 16,
-                      }}
-                    />
-                  )}
-                  {anchorWallet?.publicKey.toString() !== publicKey.toString() && (
-                    <FollowUnfollowButtonDataWrapper
-                      targetPubkey={publicKey.toString()}
-                      className={`pointer-events-auto `}
-                    />
-                  )}
-                </div>
-              </div>
-
-              <div className="mt-10 flex justify-center lg:justify-start">
-                <ProfileDisplayName />
-              </div>
-              <FollowerCount
-                wallet={anchorWallet}
-                setShowFollowsModal={setShowFollowsModal}
-                showButton={false}
-              />
-              <div className="mt-10 flex justify-center lg:justify-start">
-                <Link href={'/messages?address=' + publicKey} passHref>
-                  <a className=" flex max-w-fit items-center  space-x-2 rounded-full px-4 py-2 text-base shadow-lg shadow-black hover:text-gray-300 ">
-                    <span>Message</span>
-                    <MessagesIcon className="h-5 w-5" />
-                  </a>
-                </Link>
-              </div>
-            </div>
+         
 
             <div className="mt-10 w-full">
               <ProfileMenu />
