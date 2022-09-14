@@ -43,7 +43,6 @@ import Popover from '../../../components/Popover';
 
 
 import { ArrowRightIcon } from '@heroicons/react/outline';
-import Link from 'next/link';
 import React from 'react';
 import { Button5 } from '@/components/Button2';
 import { FeedItem } from '../alpha/feed.utils';
