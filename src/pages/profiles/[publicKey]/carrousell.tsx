@@ -40,6 +40,20 @@ import { AhListingMultiMarketplace } from '../../nfts/[address]';
 import { getAuctionHouseInfo } from '../../../modules/utils/marketplace';
 import Popover from '../../../components/Popover';
 
+
+
+import { ArrowRightIcon } from '@heroicons/react/outline';
+import Link from 'next/link';
+import React from 'react';
+import { Button5 } from '@/components/Button2';
+import { FeedItem } from '../alpha/feed.utils';
+import { FeedCard, LoadingFeedCard } from '../alpha/FeedCard';
+import Marquee from 'react-fast-marquee';
+import clsx from 'clsx';
+import { QueryContext } from '@/hooks/useApolloQuery';
+
+
+
 export type OwnedNFT = OwnedNfTsQuery['nfts'][0];
 
 export const getServerSideProps: GetServerSideProps<WalletDependantPageProps> = async (context) =>
