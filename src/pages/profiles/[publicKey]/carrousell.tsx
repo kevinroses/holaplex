@@ -636,7 +636,7 @@ ProfileNFTs.getLayout = function getLayout(
 ): JSX.Element {
   return (
     <ProfileDataProvider profileData={profileData}>
-      <ProfileLayout profileData={profileData}>{profileData.children}</ProfileLayout>
+    
     </ProfileDataProvider>
   );
 };
