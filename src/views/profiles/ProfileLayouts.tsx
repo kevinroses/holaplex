@@ -85,9 +85,7 @@ const ProfileLayout = ({ children, profileData }: ProfileLayoutProps) => {
       />
       <WalletIdentityProvider appName="Holaplex" appTwitter="@holaplex">
         <div>
-          <header className="nftheadercarrousell">
-            <Banner className="h-40 md:h-64 " style={{ backgroundImage: `url(${banner})` }} />
-          </header>
+        
           <div className="container  mx-auto px-6 pb-20 lg:flex">
             <div className="mlg:mx-0 relative mx-auto w-full max-w-xs lg:sticky lg:top-24 lg:h-96 nftheadercarrousell">
               <div className="-mt-12 flex  justify-center text-center lg:justify-start lg:gap-12">
