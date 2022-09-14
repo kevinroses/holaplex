@@ -622,9 +622,13 @@ function ProfileNFTs(props: WalletDependantPageProps) {
     </>
   );
 }
-const nftheadercarrousell = styled.div`
-  display: none;
-`;
+
+const nftheadercarrousell = css({
+  display: none
+});
+
+
+
 export default ProfileNFTs;
 
 ProfileNFTs.getLayout = function getLayout(
