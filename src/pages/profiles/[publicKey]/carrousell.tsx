@@ -126,6 +126,46 @@ export const NFTCard = ({
 
   return (
     <>
+      
+      
+      <div>
+      <div className="relative h-[450px]">
+        <Marquee speed={feedEvents.length ? 40 : 0} gradient={false} pauseOnHover={true}>
+          <div
+            className={clsx('grid grid-flow-col gap-8 overflow-x-scroll py-2 pl-8 no-scrollbar')}
+          >
+            {feedEvents.map((fi, i) => (
+              <div className="w-96 flex-shrink-0" key={i}>
+                <FeedCard
+                  options={{ hideAction: true }}
+                  event={fi}
+                  myFollowingList={[]}
+                  key={fi.feedEventId}
+                />
+              </div>
+            ))}
+          </div>
+        </Marquee>
+        {!feedEvents.length && (
+          <div
+            className={clsx(
+              ' absolute inset-0  grid grid-flow-col gap-8 overflow-x-scroll py-2 pl-8 no-scrollbar'
+            )}
+          >
+            {Array(N_ITEMS)
+              .fill(null)
+              .map((_, i) => (
+                <div className="w-96 flex-shrink-0 " key={i}>
+                  <LoadingFeedCard />
+                </div>
+              ))}
+          </div>
+        )}
+      </div>
+
+    </div>
+      
+      
       <div className="relative transform overflow-hidden rounded-lg border-gray-900 bg-gray-900 p-4 shadow-md shadow-black transition duration-[300ms] hover:scale-[1.02]">
         <Link href={`/nfts/${nft.address}`} scroll={true} passHref>
           <a target={newTab ? `_blank` : `_self`} className={`cursor-pointer`}>
