@@ -45,8 +45,8 @@ import Popover from '../../../components/Popover';
 import { ArrowRightIcon } from '@heroicons/react/outline';
 import React from 'react';
 import { Button5 } from '@/components/Button2';
-import { FeedItem } from '../alpha/feed.utils';
-import { FeedCard, LoadingFeedCard } from '../alpha/FeedCard';
+import { FeedItem } from 'src/views/alpha/feed.utils';
+import { FeedCard, LoadingFeedCard } from 'src/views/alpha/FeedCard';
 import Marquee from 'react-fast-marquee';
 import { QueryContext } from '@/hooks/useApolloQuery';
 
