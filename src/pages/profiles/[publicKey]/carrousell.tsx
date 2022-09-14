@@ -34,7 +34,7 @@ import { InView } from 'react-intersection-observer';
 import { isEmpty, uniq } from 'ramda';
 import { TailSpin } from 'react-loader-spinner';
 import NoProfileItems, { NoProfileVariant } from '@/components/NoProfileItems';
-import ProfileLayout from '@/views/profiles/ProfileLayout';
+import ProfileLayout from '@/views/profiles/ProfileLayouts';
 import GridSelector, { GridSize } from '@/components/GridSelector';
 import { AhListingMultiMarketplace } from '../../nfts/[address]';
 import { getAuctionHouseInfo } from '../../../modules/utils/marketplace';
@@ -636,7 +636,7 @@ ProfileNFTs.getLayout = function getLayout(
 ): JSX.Element {
   return (
     <ProfileDataProvider profileData={profileData}>
-    
+    <ProfileLayout profileData={profileData}>{profileData.children}</ProfileLayout>
     </ProfileDataProvider>
   );
 };
