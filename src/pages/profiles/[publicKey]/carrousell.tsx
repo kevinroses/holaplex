@@ -50,6 +50,17 @@ import { FeedCard, LoadingFeedCard } from 'src/views/alpha/FeedCard';
 import Marquee from 'react-fast-marquee';
 import { QueryContext } from '@/hooks/useApolloQuery';
 
+const N_ITEMS = 12;
+
+export type HeroSectionData = FeedItem[];
+
+export interface HeroSectionProps {
+  context: QueryContext<HeroSectionData>;
+}
+
+export function HeroSection(props: HeroSectionProps): JSX.Element {
+  const feedEvents: FeedItem[] = props.context.data ?? [];
+
 
 
 export type OwnedNFT = OwnedNfTsQuery['nfts'][0];
