@@ -1,77 +1,72 @@
-import { useEffect, useMemo, useState } from 'react';
-import { LoadingNFTCard, NFTCard, OwnedNFT } from 'src/pages/profiles/[publicKey]/nfts';
-import { HomeSection, HomeSectionCarousel } from 'src/pages/index';
-import { AuctionHouse, Marketplace } from '@holaplex/marketplace-js-sdk';
-import useWindowDimensions from '@/hooks/useWindowDimensions';
+import { ArrowRightIcon } from '@heroicons/react/outline';
+import Link from 'next/link';
+import React from 'react';
+import { Button5 } from '@/components/Button2';
+import { FeedItem } from '../alpha/feed.utils';
+import { FeedCard, LoadingFeedCard } from '../alpha/FeedCard';
+import Marquee from 'react-fast-marquee';
+import clsx from 'clsx';
 import { QueryContext } from '@/hooks/useApolloQuery';
 
-const CAROUSEL_ROWS: number = 2;
-const CAROUSEL_COLS_LARGE_SCREEN: number = 4;
-const CAROUSEL_COLS_SMALL_SCREEN: number = 3;
-const CAROUSEL_PAGES: number = 3;
-const LARGE_SCREEN_THRESHOLD: number = 1350;
-const N_LISTINGS: number = CAROUSEL_ROWS * CAROUSEL_COLS_LARGE_SCREEN * CAROUSEL_PAGES;
+const N_ITEMS = 12;
 
-export type FeaturedBuyNowListingsData = ListingPreviewData[];
+export type HeroSectionData = FeedItem[];
 
-export interface ListingPreviewData {
-  auctionHouse: AuctionHouse;
-  nft: OwnedNFT;
+export interface HeroSectionProps {
+  context: QueryContext<HeroSectionData>;
 }
 
-export interface FeaturedBuyNowListingsSectionProps {
-  context: QueryContext<FeaturedBuyNowListingsData>;
-}
-
-export function FeaturedBuyNowListingsSection(props: FeaturedBuyNowListingsSectionProps) {
-  const bodyElements: JSX.Element[] = useMemo(() => {
-    if (props.context.loading || !props.context.data) {
-      return [...Array(N_LISTINGS)].map((_, i) => (
-        <HomeSectionCarousel.Item key={i} className="p-4">
-          <LoadingNFTCard />
-        </HomeSectionCarousel.Item>
-      ));
-    } else {
-      return props.context.data.map((s) => (
-        <HomeSectionCarousel.Item key={s.nft.address} className="p-4">
-          <NFTCard
-            newTab={false}
-            nft={s.nft}
-            marketplace={{ auctionHouses: [s.auctionHouse] } as Marketplace}
-            refetch={props.context.refetch}
-            loading={props.context.loading}
-          />
-        </HomeSectionCarousel.Item>
-      ));
-    }
-  }, [props.context]);
-
-  const { width: windowWidth } = useWindowDimensions();
-  const [carouselCols, setCarouselCols] = useState<number>(CAROUSEL_COLS_LARGE_SCREEN);
-
-  useEffect(() => {
-    if (windowWidth < LARGE_SCREEN_THRESHOLD) {
-      if (carouselCols !== CAROUSEL_COLS_SMALL_SCREEN) {
-        setCarouselCols(CAROUSEL_COLS_SMALL_SCREEN);
-      }
-    } else if (carouselCols !== CAROUSEL_COLS_LARGE_SCREEN) {
-      setCarouselCols(CAROUSEL_COLS_LARGE_SCREEN);
-    }
-  }, [windowWidth]);
+export function HeroSection(props: HeroSectionProps): JSX.Element {
+  const feedEvents: FeedItem[] = props.context.data ?? [];
 
   return (
-    <HomeSection>
-      <HomeSection.Header>
-        <HomeSection.Title>What&apos;s hot</HomeSection.Title>
-        <HomeSection.HeaderAction href="/discover/nfts?type=buy-now">
-          See all
-        </HomeSection.HeaderAction>
-      </HomeSection.Header>
-      <HomeSection.Body>
-        <HomeSectionCarousel rows={CAROUSEL_ROWS} cols={carouselCols}>
-          {bodyElements}
-        </HomeSectionCarousel>
-      </HomeSection.Body>
-    </HomeSection>
+    <div>
+      <div className="relative h-[450px]">
+        <Marquee speed={feedEvents.length ? 40 : 0} gradient={false} pauseOnHover={true}>
+          <div
+            className={clsx('grid grid-flow-col gap-8 overflow-x-scroll py-2 pl-8 no-scrollbar')}
+          >
+            {feedEvents.map((fi, i) => (
+              <div className="w-96 flex-shrink-0" key={i}>
+                <FeedCard
+                  options={{ hideAction: true }}
+                  event={fi}
+                  myFollowingList={[]}
+                  key={fi.feedEventId}
+                />
+              </div>
+            ))}
+          </div>
+        </Marquee>
+        {!feedEvents.length && (
+          <div
+            className={clsx(
+              ' absolute inset-0  grid grid-flow-col gap-8 overflow-x-scroll py-2 pl-8 no-scrollbar'
+            )}
+          >
+            {Array(N_ITEMS)
+              .fill(null)
+              .map((_, i) => (
+                <div className="w-96 flex-shrink-0 " key={i}>
+                  <LoadingFeedCard />
+                </div>
+              ))}
+          </div>
+        )}
+      </div>
+
+      <div className="mt-20 flex flex-col items-center text-center">
+        <h1 className="text-3xl font-medium">
+          Every NFT on Solana. Every wallet is a store. Everyone is welcome.
+        </h1>
+        <Link href="/alpha">
+          <a className="mt-10">
+            <Button5 className="!py-3 !px-6 !text-2xl !font-medium" v="primary">
+              Get started <ArrowRightIcon className="ml-3 h-8 w-8" />
+            </Button5>
+          </a>
+        </Link>
+      </div>
+    </div>
   );
 }
