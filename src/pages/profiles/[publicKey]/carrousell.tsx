@@ -404,13 +404,13 @@ export const NFTGrid: FC<NFTGridProps> = ({
        <div
         className={clsx(
           'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4',
-          gridView === '6x6'
+          gridView === '1x1'
             ? 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
-            : gridView === '4x4'
-            ? 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 '
             : gridView === '2x2'
+            ? 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 '
+            : gridView === '4x4'
             ? 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
-            : gridView === '1x1'
+            : gridView === '6x6'
             ? 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
             : ''
         )}
