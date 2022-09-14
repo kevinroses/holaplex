@@ -90,7 +90,7 @@ const ProfileLayout = ({ children, profileData }: ProfileLayoutProps) => {
          
 
             <div className="mt-10 w-full">
-              <ProfileMenu />
+              
               {children}
             </div>
             <FollowModal
