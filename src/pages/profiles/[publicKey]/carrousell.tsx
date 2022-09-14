@@ -406,9 +406,9 @@ export const NFTGrid: FC<NFTGridProps> = ({
           'grid grid-cols-1 gap-6',
           gridView === '4x4'
             ? 'md:grid-cols-2'
-            : gridView === '4x4'
+            : gridView === '8x8'
             ? 'sm:grid-cols-2 lg:grid-cols-3 '
-            : gridView === '4x4'
+            : gridView === '7x7'
             ? 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
             : gridView === '6x6'
             ? 'md:grid-cols-6'
