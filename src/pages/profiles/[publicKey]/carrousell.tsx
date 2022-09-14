@@ -403,7 +403,7 @@ export const NFTGrid: FC<NFTGridProps> = ({
     <>
        <div
         className={clsx(
-            'md:grid-cols-2'
+            'md:grid-cols-2',
             : gridView === '2x2'
             ? 'sm:grid-cols-2 lg:grid-cols-3 '
             : gridView === '4x4'
