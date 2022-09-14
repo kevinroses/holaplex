@@ -49,7 +49,6 @@ import { Button5 } from '@/components/Button2';
 import { FeedItem } from '../alpha/feed.utils';
 import { FeedCard, LoadingFeedCard } from '../alpha/FeedCard';
 import Marquee from 'react-fast-marquee';
-import clsx from 'clsx';
 import { QueryContext } from '@/hooks/useApolloQuery';
 
 
