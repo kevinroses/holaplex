@@ -34,14 +34,11 @@ import { InView } from 'react-intersection-observer';
 import { isEmpty, uniq } from 'ramda';
 import { TailSpin } from 'react-loader-spinner';
 import NoProfileItems, { NoProfileVariant } from '@/components/NoProfileItems';
-import ProfileLayout from '@/views/profiles/ProfileLayouts';
+import ProfileLayout from '@/views/profiles/ProfileLayout';
 import GridSelector, { GridSize } from '@/components/GridSelector';
 import { AhListingMultiMarketplace } from '../../nfts/[address]';
 import { getAuctionHouseInfo } from '../../../modules/utils/marketplace';
 import Popover from '../../../components/Popover';
-
-
-
 
 export type OwnedNFT = OwnedNfTsQuery['nfts'][0];
 
@@ -129,8 +126,6 @@ export const NFTCard = ({
 
   return (
     <>
-      
-   
       <div className="relative transform overflow-hidden rounded-lg border-gray-900 bg-gray-900 p-4 shadow-md shadow-black transition duration-[300ms] hover:scale-[1.02]">
         <Link href={`/nfts/${nft.address}`} scroll={true} passHref>
           <a target={newTab ? `_blank` : `_self`} className={`cursor-pointer`}>
@@ -406,9 +401,9 @@ export const NFTGrid: FC<NFTGridProps> = ({
 }) => {
   return (
     <>
-       <div
+      <div
         className={clsx(
-              'grid grid-cols-1 gap-6 { styles.grid-cols-1 }',
+          'grid grid-cols-1 gap-6',
           gridView === '1x1'
             ? 'md:grid-cols-2'
             : gridView === '2x2'
@@ -628,10 +623,6 @@ function ProfileNFTs(props: WalletDependantPageProps) {
   );
 }
 
-
-
-
-
 export default ProfileNFTs;
 
 ProfileNFTs.getLayout = function getLayout(
@@ -639,7 +630,7 @@ ProfileNFTs.getLayout = function getLayout(
 ): JSX.Element {
   return (
     <ProfileDataProvider profileData={profileData}>
-    <ProfileLayout profileData={profileData}>{profileData.children}</ProfileLayout>
+      <ProfileLayout profileData={profileData}>{profileData.children}</ProfileLayout>
     </ProfileDataProvider>
   );
 };
