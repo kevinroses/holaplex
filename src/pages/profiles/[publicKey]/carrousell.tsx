@@ -3,7 +3,7 @@ import { FC, useMemo, useState } from 'react';
 //@ts-ignore
 import FeatherIcon from 'feather-icons-react';
 import clsx from 'clsx';
-import styles from'src/assets/styles/ScopedSelectors.css';
+import styles from 'src/assets/styles/ScopedSelectors.css';
 import { OwnedNfTsQuery, useOwnedNfTsQuery } from '@/graphql/indexerTypes';
 import Link from 'next/link';
 import TextInput2 from 'src/components/TextInput2';
