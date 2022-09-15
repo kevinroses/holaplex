@@ -127,6 +127,12 @@ const StyleVariables = {
     letterSpacing: 0.2,
   } as CSSObject,
 
+  
+  .grid-cols-1 {
+    grid-template-columns: repeat(4,minmax(0,1fr));
+}
+
+
   label: {
     color: subtleText,
     fontSize: 14,
