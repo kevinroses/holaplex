@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next';
 import { FC, useMemo, useState } from 'react';
 //@ts-ignore
 import FeatherIcon from 'feather-icons-react';
-import * as styles from 'src/assets/styles/ScopedSelectors.css';
+import * as styleses from 'src/assets/styles/ScopedSelectors.css';
 import clsx from 'clsx';
 import { OwnedNfTsQuery, useOwnedNfTsQuery } from '@/graphql/indexerTypes';
 import Link from 'next/link';
@@ -409,7 +409,7 @@ export const NFTGrid: FC<NFTGridProps> = ({
     <>
        <div
         className={clsx(
-              'grid grid-cols-1 gap-6',
+              'grid grid-cols-1 gap-6 {styleses.grid-cols-1} ',
           gridView === '1x1'
             ? 'md:grid-cols-2'
             : gridView === '2x2'
