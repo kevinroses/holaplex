@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next';
 import { FC, useMemo, useState } from 'react';
 //@ts-ignore
 import FeatherIcon from 'feather-icons-react';
-import * as styles from 'src/assets/stylesScopedSelectors.css';
+import * as styles from 'src/assets/styles/ScopedSelectors.css';
 import clsx from 'clsx';
 import { OwnedNfTsQuery, useOwnedNfTsQuery } from '@/graphql/indexerTypes';
 import Link from 'next/link';
